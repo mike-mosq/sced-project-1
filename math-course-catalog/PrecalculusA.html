@@ -1,0 +1,747 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>Precalculus A, Curriculum Contents and Pacing Guide</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#precalculus-a-curriculum-contents-and-pacing-guide">Precalculus A, Curriculum Contents and Pacing Guide</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#unit-1-functions">Unit 1: Functions</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#unit-2-trigonometric-functions">Unit 2: Trigonometric Functions</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#unit-3-vectors-and-complex-numbers">Unit 3: Vectors and Complex Numbers</a></div><ul class="outline-children"></ul></li></div></div><div id='write'  class=''><h1 id='precalculus-a-curriculum-contents-and-pacing-guide'><span>Precalculus A, Curriculum Contents and Pacing Guide</span></h1><p><span>This section provides a brief summary of the course units in the semester. The semester is divided into three units spread over 90 days. The Unit Pacing Guide provides a general timeline for presenting each unit. It is designed to fit your class schedule and is adjustable. </span></p><p><span> </span></p><h2 id='unit-1-functions'><span>Unit 1: Functions</span></h2><p><span> </span></p><figure><table><thead><tr><th>&nbsp;</th><th><strong><span>Unit 1: Functions</span></strong></th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody><tr><td><strong><span>Day</span></strong><span>       </span></td><td><strong><span>Activity /</span></strong><span> </span><em><span>Objective</span></em><span>                                                                                        </span></td><td><strong><span>Common Core  State Standard</span></strong></td><td><strong><span>Type</span></strong></td></tr><tr><td><span>1 day:  1</span></td><td><strong><span>Syllabus and Plato Student  Orientation</span></strong><span>  </span><em><span>Review the Course Syllabus at the beginning of this course.</span></em></td><td>&nbsp;</td><td><span>Course Orientation</span></td></tr><tr><td><span>4 days:  2–5</span></td><td><strong><span>Modeling with  Functions</span></strong><span>  </span><em><span>Write a function that describes a  relationship between two quantities.</span></em></td><td><strong><span>F.BF.A.1.</span></strong><span> Write a function that  describes a relationship between two quantities.  c. Compose functions.  </span><em><span>For example, if T(y) is the temperature in  the atmosphere as a function of  height, and h(t) is the height of a  weather balloon as a function of time,  then T(h(t)) is the temperature at the location  of the weather balloon as a function of time.</span></em></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  6–8</span></td><td><strong><span>Inverse Functions</span></strong><span>  </span><em><span>Define and use inverse  functions.</span></em></td><td><strong><span>F.BF.B.4.</span></strong><span> Find inverse  functions.  b. Verify by  composition that one function is the inverse  of another.  c. Read values of  an inverse function from a graph or  a table, given that the function has an inverse.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  9–11</span></td><td><strong><span>Exponential Models</span></strong><span>  </span><em><span>Investigate exponential models.</span></em></td><td><span>Mathematical Practice: Modeling</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  12–14</span></td><td><strong><span>Logarithmic Functions</span></strong><span>  </span><em><span>Examine logarithmic functions.</span></em></td><td><strong><span>F.IF.C.7.</span></strong><span> Graph functions expressed symbolically and show key features of the graph, by hand in simple cases and  using technology for more complicated cases.  d. Graph rational  functions, identifying zeros and asymptotes  when suitable factorizations are available,  and showing end behavior.        </span><strong><span>F.BF.B.5.</span></strong><span> Understand the inverse relationship between exponents and logarithms and use  this relationship to solve  problems involving logarithms and exponents.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  15–17</span></td><td><strong><span>Logarithmic Models</span></strong><span>  </span><em><span>Investigate logarithmic models.</span></em></td><td><span>Mathematical Practice: Modeling</span></td><td><span>Lesson</span></td></tr><tr><td><span>4 days:  18–21</span></td><td><strong><span>Solving Exponential and Logarithmic Functions</span></strong><span>  </span><em><span>Solve exponential and logarithmic functions.</span></em></td><td><strong><span>F.IF.C.7.</span></strong><span> Graph functions expressed symbolically and show key features of the graph, by hand in simple cases and  using technology for more complicated cases.  d. Graph rational  functions, identifying zeros and asymptotes  when suitable factorizations are available,  and showing end behavior.        </span><strong><span>F.BF.B.5.</span></strong><span> Understand the inverse relationship between exponents and logarithms and use  this relationship to solve  problems involving logarithms and exponents.</span></td><td><span>Lesson</span></td></tr><tr><td><span>5 days:  22–26</span></td><td><strong><span>Unit Activity  and Threaded Discussion—Unit 1</span></strong></td><td>&nbsp;</td><td><span>Unit Activity Discussion</span></td></tr><tr><td><span>1 day:  27</span></td><td><strong><span>Posttest—Unit 1</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr></tbody></table></figure><p><span> </span></p><p><span> </span></p><h1 id='unit-2-trigonometric-functions'><span>Unit 2: Trigonometric Functions</span></h1><p><span> </span></p><p><span> </span></p><figure><table><thead><tr><th>&nbsp;</th><th><strong><span>Unit 2: Trigonometric Functions</span></strong></th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody><tr><td><strong><span>Day</span></strong><span>       </span></td><td><strong><span>Activity /</span></strong><span> </span><em><span>Objective</span></em><span>                                                                                       </span></td><td><strong><span>Common Core  State Standard</span></strong></td><td><strong><span>Type</span></strong></td></tr><tr><td><span>4 days:  28–31</span></td><td><strong><span>The Unit Circle</span></strong><span>  </span><em><span>Use the unit circle to manipulate and solve  trigonometric functions.</span></em></td><td><strong><span>F.TF.A.3.</span></strong><span> Use  special triangles to determine geometrically the values of sine, cosine, tangent  for   ,    ,and   , and use the unit circle to  3  4     6  express the values of sine, cosine, and tangent for </span><em><span>x</span></em><span>, + </span><em><span>x</span></em><span>,  and 2  − </span><em><span>x</span></em><span> in terms of their values for </span><em><span>x</span></em><span>, where  </span><em><span>x</span></em><span> is any real  number.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  32–34</span></td><td><strong><span>Problems Involving Right Triangles</span></strong><span>  </span><em><span>Find unknown measurements in right  triangles.</span></em></td><td><strong><span>F.TF.A.3.</span></strong><span> Use  special triangles to determine geometrically the values of sine, cosine, tangent  for   ,    ,and   , and use the unit circle to  3  4     6  express the values of sine, cosine, and tangent for </span><em><span>x</span></em><span>, + </span><em><span>x</span></em><span>,  and 2  − </span><em><span>x</span></em><span> in terms of their values for </span><em><span>x</span></em><span>, where  </span><em><span>x</span></em><span> is any real  number.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  35–37</span></td><td><strong><span>Trigonometric Symmetry</span></strong><span>  </span><em><span>Use the unit circle to explain symmetry  and periodicity of trigonometric functions.</span></em></td><td><strong><span>F.TF.A.4.</span></strong><span> Use the unit circle to explain symmetry (odd and even)  and periodicity of trigonometric functions.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  38–40</span></td><td><strong><span>Inverse Trigonometric Functions</span></strong><span>  </span><em><span>Examine inverse trigonometric functions.</span></em></td><td><strong><span>F.TF.B.6.</span></strong><span> Understand that restricting  a trigonometric function to a  domain on which it is always  increasing or always decreasing allows its  inverse to be constructed.     </span><strong><span>F.TF.B.7.</span></strong><span> Use inverse functions to  solve trigonometric equations that  arise in modeling contexts;  evaluate the solutions using technology,  and interpret them in terms of the context.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  41–43</span></td><td><strong><span>Sum, Difference, and Cofunction Identities</span></strong><span>  </span><em><span>Examine and apply the sum, difference, and  cofunction identities.</span></em></td><td><strong><span>F.TF.C.9.</span></strong><span> Prove the addition and  subtraction formulas for sine,  cosine, and tangent and use them to solve  problems.</span></td><td><span>Lesson</span></td></tr><tr><td><span>4 days:  44–47</span></td><td><strong><span>Double-Angle and  Half-Angle Identities</span></strong><span>  </span><em><span>Use the double-angle and half-angle identities.</span></em></td><td><span>Preparation for Calculus</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  48–50</span></td><td><strong><span>Product-Sum and Sum-Product Identities</span></strong><span>  </span><em><span>Examine and apply the product-sum and  sum-product identities.</span></em></td><td><span>Preparation for Calculus</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  51–53</span></td><td><strong><span>Solving Trigonometric Equations</span></strong><span>  </span><em><span>Solve trigonometric equations.</span></em></td><td><span>Preparation for Calculus</span></td><td><span>Lesson</span></td></tr><tr><td><span>5 days:  54–58</span></td><td><strong><span>Unit Activity  and Threaded Discussion—Unit 2</span></strong></td><td>&nbsp;</td><td><span>Unit Activity Discussion</span></td></tr><tr><td><span>1 day:  59</span></td><td><strong><span>Posttest—Unit 2</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr></tbody></table></figure><p>&nbsp;</p><h1 id='unit-3-vectors-and-complex-numbers'><span>Unit 3: Vectors and Complex Numbers</span></h1><p><span> </span></p><figure><table><thead><tr><th>&nbsp;</th><th><strong><span>Unit 3: Vectors and  Complex Numbers</span></strong></th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody><tr><td><strong><span>Day</span></strong><span>       </span></td><td><strong><span>Activity /</span></strong><span> </span><em><span>Objective</span></em><span>                                                                                       </span></td><td><strong><span>Common Core  State Standard</span></strong></td><td><strong><span>Type</span></strong></td></tr><tr><td><span>3 days:  60–62</span></td><td><strong><span>Vectors in a  Plane</span></strong><span>  </span><em><span>Identify, add, and measure the magnitude of vectors.</span></em></td><td><strong><span>N.VM.A.1.</span></strong><span> Recognize vector quantities  as having both magnitude and  direction.  Represent vector  quantities by directed line segments,  and use appropriate symbols for vectors and  their magnitudes (e.g.,  </span><strong><span>v,</span></strong><span> </span><span>|</span><strong><span>v</span></strong><span>|</span><span>, </span><span>|</span><span>|</span><strong><span>v</span></strong><span>|</span><span>|</span><span>, </span><em><span>v</span></em><span>).     </span><strong><span>N.VM.A.2.</span></strong><span> Find the components of a  vector by subtracting the  coordinates of an initial point from the coordinates of a terminal point.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  63–65</span></td><td><strong><span>Velocity Vectors</span></strong><span>  </span><em><span>Use vectors to represent velocity in models.</span></em></td><td><strong><span>N.VM.A.3.</span></strong><span> Solve problems involving  velocity and other quantities that  can be represented by vectors.     </span><strong><span>N.VM.B.4.</span></strong><span> Add and subtract  vectors.  a. Add  vectors end-to-end, component-wise, and  by the parallelogram rule. Understand that  the magnitude of a sum of two vectors is typically not the sum of the  magnitudes.  b. Given  two vectors in magnitude and direction form,  determine the magnitude and direction of their  sum.  c. Understand vector  subtraction </span><strong><span>v</span></strong><span> − </span><strong><span>w</span></strong><span> as </span><strong><span>v</span></strong><span> +  (-</span><strong><span>w</span></strong><span>), where -</span><strong><span>w</span></strong><span> is the additive inverse of </span><strong><span>w</span></strong><span>,  with the same magnitude as </span><strong><span>w</span></strong><span> and pointing in the opposite direction. Represent vector  subtraction graphically by connecting the tips in the appropriate order, and perform  vector subtraction component-wise.</span></td><td><span>Lesson</span></td></tr><tr><td><span>4 days:  66–69</span></td><td><strong><span>Negative Vectors</span></strong><span>  </span><em><span>Apply vector operations of addition and  multiplication to negative vectors.</span></em></td><td><strong><span>N.VM.B.5.</span></strong><span> Multiply a vector by a scalar.  a. Represent  scalar multiplication graphically by  scaling vectors and possibly reversing their  direction; perform scalar multiplication component-wise, e.g., as </span><em><span>c</span></em><span>(</span><strong><span>v*</span></strong><span>x</span><em><span>, </span><strong><span>v</span></strong></em><span>y</span><em><span>) = (</span></em><span>c</span><em><strong><span>v</span></strong></em><span>x*, </span><em><span>c**</span></em><span>v</span><strong><em><span>y</span></em><span>).  b. Compute  the magnitude of a scalar multiple </span><em><span>c</span></em></strong><span>v</span><em><span>*  using </span><span>|</span><span>|</span></em><span>c</span><em><strong><span>v</span></strong><span>|</span><span>|</span><span> = </span><span>|</span></em><span>c*</span><span>|</span><strong><span>v</span></strong><span>. Compute the direction of </span><em><span>c**</span></em><span>v</span><em><span>* knowing that when </span><span>|</span></em><span>c*</span><span>|</span><strong><span>v</span></strong><span>  ≠ 0, the direction of </span><em><span>c**</span></em><span>v** is either along </span><strong><span>v</span></strong><span> (for </span><em><span>c</span></em><span> &gt; 0) or against </span><strong><span>v</span></strong><span> (for </span><em><span>c</span></em><span>  &lt; 0).</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  70–72</span></td><td><strong><span>Complex Numbers</span></strong><span>  </span><em><span>Define and work  with complex numbers.</span></em></td><td><strong><span>N.CN.A.3.</span></strong><span> Find  the conjugate of a complex number;  use conjugates to find moduli and quotients  of complex numbers.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  73–75</span></td><td><strong><span>Polar  Coordinates in Graphs</span></strong><span>  </span><em><span>Examine polar coordinates in graphs.</span></em></td><td><strong><span>N.CN.B.4.</span></strong><span> Represent complex numbers  on the complex plane in  rectangular and polar form (including  real and imaginary numbers), and explain  why the rectangular and polar forms of a  given complex number represent the same number.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  76–78</span></td><td><strong><span>Complex Numbers and De Moivre&#39;s Theorem</span></strong><span> </span><em><span>Perform  advanced operations with complex numbers,  including De Moivre&#39;s Theorem.</span></em></td><td><strong><span>N.CN.B.4.</span></strong><span> Represent complex numbers  on the complex plane in  rectangular and polar form (including  real and imaginary numbers), and explain  why the rectangular and polar forms of a  given complex number represent the same number.</span></td><td><span>Lesson</span></td></tr><tr><td><span>4 days:  79–82</span></td><td><strong><span>Complex Numbers in the Plane</span></strong><span>  </span><em><span>Represent basic operations of complex  numbers geometrically on the complex plane.</span></em></td><td><strong><span>N.CN.A.3.</span></strong><span> Find  the conjugate of a complex number;  use conjugates to find moduli and quotients  of complex numbers.     </span><strong><span>N.CN.B.5.</span></strong><span> Represent addition,  subtraction, multiplication, and  conjugation of complex numbers  geometrically on the complex plane; use properties of this representation for  computation. For  example, </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="19.806ex" height="2.713ex" role="img" focusable="false" viewBox="0 -949 8754.4 1199" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-92-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-92-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-92-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-92-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-92-TEX-N-221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"></path><path id="MJX-92-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-92-TEX-N-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path id="MJX-92-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-92-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-92-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-92-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-92-TEX-N-28"></use></g><g data-mml-node="mo" transform="translate(389,0)"><use data-c="2212" xlink:href="#MJX-92-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1167,0)"><use data-c="31" xlink:href="#MJX-92-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1889.2,0)"><use data-c="2B" xlink:href="#MJX-92-TEX-N-2B"></use></g><g data-mml-node="msqrt" transform="translate(2889.4,0)"><g transform="translate(853,0)"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-92-TEX-N-33"></use></g></g><g data-mml-node="mo" transform="translate(0,89)"><use data-c="221A" xlink:href="#MJX-92-TEX-N-221A"></use></g><rect width="500" height="60" x="853" y="829"></rect></g><g data-mml-node="mo" transform="translate(4464.7,0)"><use data-c="2217" xlink:href="#MJX-92-TEX-N-2217"></use></g><g data-mml-node="mi" transform="translate(5186.9,0)"><use data-c="1D456" xlink:href="#MJX-92-TEX-I-1D456"></use></g><g data-mml-node="mo" transform="translate(5531.9,0)"><use data-c="2217" xlink:href="#MJX-92-TEX-N-2217"></use></g><g data-mml-node="mo" transform="translate(6031.9,0)"><use data-c="29" xlink:href="#MJX-92-TEX-N-29"></use></g><g data-mml-node="mn" transform="translate(6420.9,0)"><use data-c="33" xlink:href="#MJX-92-TEX-N-33"></use></g><g data-mml-node="mo" transform="translate(7198.7,0)"><use data-c="3D" xlink:href="#MJX-92-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(8254.4,0)"><use data-c="38" xlink:href="#MJX-92-TEX-N-38"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><mo>+</mo><msqrt><mn>3</mn></msqrt><mo>∗</mo><mi>i</mi><mo>∗</mo><mo stretchy="false">)</mo><mn>3</mn><mo>=</mo><mn>8</mn></math></mjx-assistive-mml></mjx-container><script type="math/tex">(-1 +  \sqrt{3} *i*)3  = 8</script><span>  because </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="14.527ex" height="2.713ex" role="img" focusable="false" viewBox="0 -949 6420.9 1199" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-93-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-93-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-93-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-93-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-93-TEX-N-221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"></path><path id="MJX-93-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-93-TEX-N-2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path><path id="MJX-93-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-93-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-93-TEX-N-28"></use></g><g data-mml-node="mo" transform="translate(389,0)"><use data-c="2212" xlink:href="#MJX-93-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1167,0)"><use data-c="31" xlink:href="#MJX-93-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1889.2,0)"><use data-c="2B" xlink:href="#MJX-93-TEX-N-2B"></use></g><g data-mml-node="msqrt" transform="translate(2889.4,0)"><g transform="translate(853,0)"><g data-mml-node="mn"><use data-c="33" xlink:href="#MJX-93-TEX-N-33"></use></g></g><g data-mml-node="mo" transform="translate(0,89)"><use data-c="221A" xlink:href="#MJX-93-TEX-N-221A"></use></g><rect width="500" height="60" x="853" y="829"></rect></g><g data-mml-node="mo" transform="translate(4464.7,0)"><use data-c="2217" xlink:href="#MJX-93-TEX-N-2217"></use></g><g data-mml-node="mi" transform="translate(5186.9,0)"><use data-c="1D456" xlink:href="#MJX-93-TEX-I-1D456"></use></g><g data-mml-node="mo" transform="translate(5531.9,0)"><use data-c="2217" xlink:href="#MJX-93-TEX-N-2217"></use></g><g data-mml-node="mo" transform="translate(6031.9,0)"><use data-c="29" xlink:href="#MJX-93-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><mo>+</mo><msqrt><mn>3</mn></msqrt><mo>∗</mo><mi>i</mi><mo>∗</mo><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">(-1 +  \sqrt{3} *i*)</script><span> has modulus 2 and  argument 120°.     </span><strong><span>N.CN.B.6.</span></strong><span> Calculate the distance  between numbers in the complex  plane as the modulus of the  difference, and the midpoint of a segment  as the average of the numbers at its endpoints.</span></td><td><span>Lesson</span></td></tr><tr><td><span>5 days:  83–87</span></td><td><strong><span>Unit Activity/Threaded Discussion—Unit 3</span></strong></td><td>&nbsp;</td><td><span>Unit Activity Discussion</span></td></tr><tr><td><span>1 day:  88</span></td><td><strong><span>Posttest—Unit 3</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr><tr><td><span>1 day:  89</span></td><td><strong><span>Semester Review</span></strong></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>1 day:  90</span></td><td><strong><span>End-of-Semester Test</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr></tbody></table></figure></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>

@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>Integrated Math 3B Curriculum Contents and Pacing Guide</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#integrated-math-3b-curriculum-contents-and-pacing-guide">Integrated Math 3B Curriculum Contents and Pacing Guide</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#unit-1-geometry-and-trigonometry">Unit 1: Geometry and Trigonometry</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#unit-2-modeling-with-functions">Unit 2: Modeling with Functions</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#unit-3-graphing-with-functions">Unit 3: Graphing with Functions</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#unit-4-inferences-and-conclusions-from-data">Unit 4: Inferences and Conclusions from Data</a></div><ul class="outline-children"></ul></li></div></div><div id='write'  class=''><h1 id='integrated-math-3b-curriculum-contents-and-pacing-guide'><span>Integrated Math 3B Curriculum Contents and Pacing Guide</span></h1><p><span>This pacing guide provides a brief summary of the units in this semester-long course. The semester is divided into four units spread across 90 days. The pacing guide provides a general timeline for completing each unit. It is designed to fit your class schedule and is adjustable. </span></p><p><span> </span></p><h2 id='unit-1-geometry-and-trigonometry'><span>Unit 1: Geometry and Trigonometry</span></h2><p><span> </span></p><p><span> </span></p><figure><table><thead><tr><th>&nbsp;</th><th><strong><span>Unit 1: Geometry and Trigonometry</span></strong></th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody><tr><td><strong><span>Day</span></strong><span>     </span></td><td><strong><span>Activity /</span></strong><span> </span><em><span>Objective</span></em><span>                                                                                                </span></td><td><strong><span>Common Core  State Standard</span></strong></td><td><strong><span>Type</span></strong></td></tr><tr><td><span>1 day:  1</span></td><td><strong><span>Syllabus and Plato  Student Orientation</span></strong><span>  </span><em><span>Review the Course Syllabus at the beginning of this course.</span></em></td><td>&nbsp;</td><td><span>Course Orientation</span></td></tr><tr><td><span>3 days:  2–4</span></td><td><strong><span>Trigonometry and the Area of a Triangle</span></strong><span>  </span><em><span>Derive the formula A = 1/2 ab sin(C) for  the area of a triangle by drawing  an auxiliary line from a vertex perpendicular to the  opposite side.</span></em></td><td><strong><span>G.SRT.D.9</span></strong><span> Derive the formula </span><em><span>A</span></em><span> = 1/2 </span><em><span>ab</span></em><span> sin(</span><em><span>C</span></em><span>) for the area of a triangle by drawing an  auxiliary line from a vertex  perpendicular to the opposite side.</span></td><td><span>Course Activity</span></td></tr><tr><td><span>2 days:  5–6</span></td><td><strong><span>Proving the Laws of Sines and Cosines</span></strong><span>  </span><em><span>Prove the Laws of Sines and Cosines and  use them to solve problems.</span></em></td><td><strong><span>G.SRT.D.10</span></strong><span> Prove the Laws of Sines and Cosines and  use them to solve problems.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  7–8</span></td><td><strong><span>Applying the Laws  of Sines and  Cosines</span></strong><span>  </span><em><span>Understand and apply the Laws of Sines and Cosines to find unknown measurements in  right and non-right triangles.</span></em></td><td><strong><span>G.SRT.D.11</span></strong><span> Understand and apply the  Law of Sines and the Law of  Cosines to find unknown measurements  in right and non-right triangles (e.g., surveying problems, resultant forces).</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  9–11</span></td><td><strong><span>Cross Sections of Three-Dimensional Objects</span></strong><span>  </span><em><span>Identify the shapes of two-dimensional  cross sections of three-dimensional  objects and identify three-dimensional  objects generated by rotations of two-dimensional objects.</span></em></td><td><strong><span>G.GMD.B.4</span></strong><span> Identify the shapes of two-dimensional cross sections of three-dimensional  objects, and identify  three-dimensional objects generated by rotations  of two-dimensional objects.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  12–14</span></td><td><strong><span>Density and Displacement</span></strong><span>  </span><em><span>Learn about and use density and  displacement along with  geometric shapes.</span></em></td><td><strong><span>G.GMD.A.1</span></strong><span> Give an informal argument for the formulas for the circumference of a  circle, area of a circle, volume of  a cylinder, pyramid, and cone. Use dissection  arguments, Cavalieri&#39;s principle, and informal limit arguments.  </span><strong><span>G.GMD.A.2</span></strong><span> Give an informal argument  using Cavalieri&#39;s principle for the formulas for the volume  of a sphere and other  solid figures.</span></td><td><span>Course Activity</span></td></tr><tr><td><span>3 days:  15–17</span></td><td><strong><span>Unit Activity/Threaded Discussion—Unit 1</span></strong></td><td>&nbsp;</td><td><span>Unit Activity</span></td></tr><tr><td><span>1 day:  18</span></td><td><strong><span>Posttest—Unit 1</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr></tbody></table></figure><p><span> </span></p><p><span> </span></p><h2 id='unit-2-modeling-with-functions'><span>Unit 2: Modeling with Functions</span></h2><p>&nbsp;</p><p><span> </span></p><figure><table><thead><tr><th>&nbsp;</th><th><strong><span>Unit 2: Modeling with  Functions</span></strong></th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody><tr><td><strong><span>Day</span></strong><span>         </span></td><td><strong><span>Activity /</span></strong><span> </span><em><span>Objective</span></em><span>                                                                                            </span></td><td><strong><span>Common Core  State Standard</span></strong></td><td><strong><span>Type</span></strong></td></tr><tr><td><span>2 days:  19–20</span></td><td><strong><span>Creating and  Solving Equations</span></strong><span>  </span><em><span>Create equations to represent situations  and solve them to work out  problems in context.</span></em></td><td><strong><span>A.CED.A.1</span></strong><span> Create equations and inequalities in one variable and use them to solve  problems. Include equations arising  from linear and quadratic functions,  and simple rational and exponential functions.  </span><strong><span>A.CED.A.2</span></strong><span> Create equations in two or  more variables to represent  relationships between quantities; graph  equations on coordinate axes with labels and scales.  </span><strong><span>A.CED.A.3</span></strong><span> Represent constraints by  equations or inequalities, and by  systems of equations and/or inequalities,  and interpret solutions as viable or nonviable options in a modeling context. For example,  represent inequalities describing nutritional and cost constraints on combinations of different foods.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  21–22</span></td><td><strong><span>Rewriting Formulas</span></strong><span>  </span><em><span>Rewrite equations to solve for a  single variable.</span></em></td><td><strong><span>A.CED.A.4</span></strong><span> Rearrange formulas to highlight a quantity of interest, using  the same reasoning as in solving equations. For example,  rearrange Ohm&#39;s law </span><em><span>V</span></em><span>  = </span><em><span>IR</span></em><span> to highlight resistance </span><em><span>R</span></em><span>.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  23–25</span></td><td><strong><span>Solving Linear  Systems of Equations: Graphs</span></strong><span>  </span><em><span>Use the graphing method to solve systems of two linear equations.</span></em></td><td><strong><span>A.CED.A.3</span></strong><span> Represent constraints by equations or inequalities, and by systems of  equations and/or inequalities, and  interpret solutions as viable or nonviable options in a modeling context. For example,  represent inequalities describing nutritional and cost constraints on combinations of different foods.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  26–27</span></td><td><strong><span>Classifying Linear Systems</span></strong><span>  </span><em><span>Classify  a system of linear equations as parallel, intersecting, or coincident.</span></em></td><td><strong><span>A.CED.A.3</span></strong><span> Represent constraints by  equations or inequalities, and by  systems of equations and/or inequalities,  and interpret solutions as viable or nonviable  options in a modeling context. For example,  represent inequalities describing nutritional and cost constraints on combinations of different foods.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  28–30</span></td><td><strong><span>Solving Linear  Systems of Inequalities: Graphs</span></strong><span>  </span><em><span>Solve a system  of inequalities by graphing.</span></em></td><td><strong><span>A.CED.A.3</span></strong><span> Represent constraints by equations or inequalities, and by systems of  equations and/or inequalities, and  interpret solutions as viable or nonviable options in a modeling context. For example,  represent inequalities describing nutritional and cost constraints on combinations of different foods.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  31–33</span></td><td><strong><span>Solving Linear Systems of Equations:  Substitution</span></strong><span>  </span><em><span>Solve a system  of equations by substitution.</span></em></td><td><strong><span>A.CED.A.3</span></strong><span> Represent constraints by equations or inequalities, and by systems of  equations and/or inequalities, and  interpret solutions as viable or nonviable options in a modeling context. For example,  represent inequalities describing nutritional and cost constraints on combinations of different foods.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  34–35</span></td><td><strong><span>Estimating Solutions for a System of Equations</span></strong><span>  </span><em><span>Study how the graphs of equations relate  to the solution of a  system of equations and explore multiple  methods of approximation for a system of equations.</span></em></td><td><strong><span>A.REI.D.11</span></strong><span> Explain why the </span><em><span>x</span></em><span>-coordinates  of the points where the  graphs of the equations </span><em><span>y</span></em><span> =  </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>) and </span><em><span>y</span></em><span> = </span><em><span>g</span></em><span>(</span><em><span>x</span></em><span>) intersect are the  solutions of the equation </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>)  = </span><em><span>g</span></em><span>(</span><em><span>x</span></em><span>); find  the solutions approximately, e.g., using technology to graph the functions, make tables of values, or find successive  approximations. Include cases where  </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>) and/or </span><em><span>g</span></em><span>(</span><em><span>x</span></em><span>) are linear, polynomial, rational, absolute  value, exponential, and logarithmic functions.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  36–38</span></td><td><strong><span>Unit  Activity/Threaded Discussion—Unit 2</span></strong></td><td>&nbsp;</td><td><span>Unit Activity</span></td></tr><tr><td><span>1 day:  39</span></td><td><strong><span>Posttest—Unit 2</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr></tbody></table></figure><p>&nbsp;</p><h1 id='unit-3-graphing-with-functions'><span>Unit 3: Graphing with Functions</span></h1><figure><table><thead><tr><th>&nbsp;</th><th><strong><span>Unit 3: Graphing with  Functions</span></strong></th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody><tr><td><strong><span>Day</span></strong><span>         </span></td><td><strong><span>Activity /</span></strong><span> </span><em><span>Objective</span></em><span>                                                                                            </span></td><td><strong><span>Common Core  State Standard</span></strong></td><td><strong><span>Type</span></strong></td></tr><tr><td><span>2 days:  40–41</span></td><td><strong><span>Graphing Linear  Inequalities in 1 Variable</span></strong><span>  </span><em><span>Graph the solution sets to inequalities in  one variable.</span></em></td><td><strong><span>A.CED.A.2</span></strong><span> Create equations in two or  more variables to represent  relationships between quantities; graph  equations on coordinate axes with labels and scales.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  42–43</span></td><td><strong><span>Graphing with  Restrictions on the  Variable</span></strong><span>  </span><em><span>Graph the solution sets to absolute value inequalities in one variable.</span></em></td><td><strong><span>A.CED.A.2</span></strong><span> Create equations in two or  more variables to represent  relationships between quantities; graph  equations on coordinate axes with labels and scales.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  44–45</span></td><td><strong><span>Graphing Solution Sets of Associated  Inequalities</span></strong><span>  </span><em><span>Graph the solution sets of quadratic  inequalities in one variable and other unions of solution  sets.</span></em></td><td><strong><span>A.CED.A.2</span></strong><span> Create equations in two or  more variables to represent  relationships between quantities; graph  equations on coordinate axes with labels and scales.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  46–47</span></td><td><strong><span>Operations on Functions</span></strong><span>  </span><em><span>Add, subtract, multiply, and divide pairs of functions.</span></em></td><td><strong><span>F.BF.A.1</span></strong><span> Write a function that describes a relationship between two quantities.  b. Combine  standard function types  using arithmetic operations.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  48–50</span></td><td><strong><span>Solving Problems: Exponential and Logarithmic</span></strong><span>  </span><em><span>Solve problems that involve exponential or logarithmic functions.</span></em></td><td><strong><span>F.LE.A.4</span></strong><span> For exponential models, express as a logarithm the solution to </span><em><span>abct</span></em><span> = </span><em><span>d</span></em><span> where </span><em><span>a, c</span></em><span>, and </span><em><span>d</span></em><span> are  numbers and the base </span><em><span>b</span></em><span> is 2, 10, or  </span><em><span>e</span></em><span>; evaluate the logarithm using technology.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  51–52</span></td><td><strong><span>Graphing Exponential and Logarithmic  Functions</span></strong><span>  </span><em><span>Graph exponential and logarithmic  functions and identify key features of those functions.</span></em></td><td><strong><span>F.IF.C.7</span></strong><span> Graph functions expressed symbolically and show key features of the graph, by  hand in simple cases and using  technology for more complicated cases.  b. Graph square root, cube root, and piecewise- defined functions, including step  functions and absolute value functions.  e.  Graph exponential and logarithmic functions,  showing intercepts and end behavior, and trigonometric functions, showing period, midline, and amplitude.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  53–55</span></td><td><strong><span>Transformation of Functions</span></strong><span>  </span><em><span>Investigate transformations of functions.</span></em></td><td><strong><span>F.BF.B.3</span></strong><span> Identify the effect on the  graph of replacing </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>)  by </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>) + </span><em><span>k</span></em><span>, </span><em><span>k f</span></em><span>(</span><em><span>x</span></em><span>), </span><em><span>f</span></em><span>(</span><em><span>kx</span></em><span>), and </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span> + </span><em><span>k</span></em><span>) for specific values of </span><em><span>k</span></em><span> (both  positive and negative); find the value  of </span><em><span>k</span></em><span> given the graphs. Experiment  with cases and illustrate an  explanation of the effects on the graph  using technology. Include recognizing even  and odd functions from their graphs and algebraic expressions for them.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  56–58</span></td><td><strong><span>Inverse Functions</span></strong><span>  </span><em><span>Study and apply the method for finding the  inverse of a function.</span></em></td><td><strong><span>F.BF.B.4</span></strong><span> Find inverse functions.  a. Solve an  equation of the form </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>) = </span><em><span>c</span></em><span> for a simple function  </span><em><span>f</span></em><span> that has an inverse and write an expression for the inverse. For example,  </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>) = 2</span><em><span>x</span></em><span>3 or </span><em><span>f</span></em><span>(</span><em><span>x</span></em><span>) = (</span><em><span>x</span></em><span> +  1)/(</span><em><span>x</span></em><span> − 1) for </span><em><span>x</span></em><span> ≠ 1.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  59–61</span></td><td><strong><span>Unit Activity/Threaded Discussion—Unit 3</span></strong></td><td>&nbsp;</td><td><span>Unit Activity</span></td></tr><tr><td><span>1 day:  62</span></td><td><strong><span>Posttest—Unit 3</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr></tbody></table></figure><p>&nbsp;</p><h1 id='unit-4-inferences-and-conclusions-from-data'><span>Unit 4: Inferences and Conclusions from Data</span></h1><figure><table><thead><tr><th>&nbsp;</th><th><strong><span>Unit 4: Inferences and  Conclusions from Data</span></strong></th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody><tr><td><strong><span>Day</span></strong><span>         </span></td><td><strong><span>Activity /</span></strong><span> </span><em><span>Objective</span></em><span>                                                                                             </span></td><td><strong><span>Common Core  State Standard</span></strong></td><td><strong><span>Type</span></strong></td></tr><tr><td><span>3 days:  63–65</span></td><td><strong><span>Normal Distributions</span></strong><span>  </span><em><span>Use the mean and standard deviation of a  data set to fit it to a normal  distribution and to estimate population percentages.</span></em></td><td><strong><span>S.ID.A.4</span></strong><span> Use the mean and standard  deviation of a data set to fit it  to a normal distribution and to estimate  population percentages. Recognize that there  are data sets for which such a procedure is not appropriate.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  66–68</span></td><td><strong><span>Making Inferences Based on Statistics</span></strong><span>  </span><em><span>Understand statistics as a process for  making inferences about population  parameters based on a random sample from that population.</span></em></td><td><strong><span>S.IC.A.1</span></strong><span> Understand statistics as a  process for making inferences about  population parameters based on a random  sample from that  population.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  69–70</span></td><td><strong><span>Evaluating the Validity of a Statistical Model</span></strong><span>  </span><em><span>Decide if a specified model (such as a  simulation) is consistent with  results from a given data-generating process.</span></em></td><td><strong><span>S.IC.A.2</span></strong><span> Decide if a specified model  is consistent with results from a  given data-generating process, e.g., using simulation.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  71–72</span></td><td><strong><span>Using Statistics in Surveys, Experiments,  and Studies</span></strong><span>  </span><em><span>Recognize the purposes of and differences  among sample surveys, experiments, and observational</span></em><span>  </span><em><span>studies.</span></em></td><td><strong><span>S.IC.B.3</span></strong><span> Recognize the purposes of  and differences among sample  surveys, experiments, and observational  studies; explain how randomization relates to each.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  73–74</span></td><td><strong><span>Analyzing a Survey</span></strong><span>  </span><em><span>Use data from a sample survey to estimate  a population mean or proportion  and develop a margin of error through  the use of simulation</span></em><span>  </span><em><span>models for  random sampling.</span></em></td><td><strong><span>S.IC.B.4</span></strong><span> Use data from a sample  survey to estimate a population mean or proportion; develop a margin  of error through the use of  simulation models for random sampling.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  75–77</span></td><td><strong><span>Fair Decisions with Random  Variables</span></strong><span>  </span><em><span>Solve for probabilities in complex  situations that go beyond counting rules and use  these probabilities to</span></em><span>  </span><em><span>make fair decisions.</span></em></td><td><strong><span>S.MD.B.6</span></strong><span> Use probabilities to make  fair decisions (e.g., drawing by  lots, using a random number generator).</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  78–79</span></td><td><strong><span>Evaluating Reports Based on Data</span></strong><span>  </span><em><span>Evaluate reports based  on data.</span></em></td><td><strong><span>S.IC.B.6</span></strong><span> Evaluate reports based on data.</span></td><td><span>Lesson</span></td></tr><tr><td><span>2 days:  80–81</span></td><td><strong><span>Statistically Comparing Two Treatments</span></strong><span>  </span><em><span>Use data from a randomized experiment to  compare two treatments and use  simulations to decide if</span></em><span>  </span><em><span>differences between parameters are significant.</span></em></td><td><strong><span>S.IC.B.5</span></strong><span> Use  data from a randomized experiment to compare  two treatments; use simulations to decide if  differences between parameters are significant.</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  82–84</span></td><td><strong><span>Complex Decisions Using Probability</span></strong><span>  </span><em><span>Analyze  decisions and strategies in complex situations  using probability concepts that go beyond  counting rules.</span></em></td><td><strong><span>S.MD.B.7</span></strong><span> Analyze decisions and  strategies using probability  concepts (e.g., product testing, medical  testing, pulling a hockey goalie at the end of a game).</span></td><td><span>Lesson</span></td></tr><tr><td><span>3 days:  85–87</span></td><td><strong><span>Unit Activity/Threaded Discussion—Unit 4</span></strong></td><td>&nbsp;</td><td><span>Unit Activity</span></td></tr><tr><td><span>1 day:  88</span></td><td><strong><span>Posttest—Unit 4</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr><tr><td><span>1 day:  89</span></td><td><strong><span>Semester Review</span></strong></td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>1 day:  90</span></td><td><strong><span>End-of-Semester Test</span></strong></td><td>&nbsp;</td><td><span>Assessment</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><span> </span></p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
